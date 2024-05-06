@@ -10,7 +10,7 @@ class BtnGroup extends React.Component {
         };
     }
 
-    handleBtnClick = (btnName) => {
+    handleBtnClick (btnName) {
         this.setState({activeBtn: btnName});
     }
 
