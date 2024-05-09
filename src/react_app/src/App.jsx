@@ -1,34 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import CarouselBox from "./components/CarouselBox.jsx";
+
+import wineImg from '../src/assets/vinho.jpeg';
+import wineImg1 from '../src/assets/vinho1.jpg';
+import wineImg2 from '../src/assets/vinho2.jpg';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+const images = [wineImg, wineImg1, wineImg2]
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <>
+          <div className='App'>
+               <CarouselBox images={images} />
+          </div>
+      </>
   )
 }
 
