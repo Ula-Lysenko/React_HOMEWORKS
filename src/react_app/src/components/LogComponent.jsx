@@ -38,10 +38,10 @@ class LogComponent extends Component {
         return(
             <div>
                 <div className='btn-group font-monospace' role='group'>
-                    <button type='button' className='btn-outline-success' onClick={this.handleAddClick}>
+                    <button type='button' className='btn btn-outline-success' onClick={this.handleAddClick}>
                         +
                     </button>
-                    <button type='button' className='btn-outline-danger' onClick={this.handleSubClick}>
+                    <button type='button' className='btn btn-outline-danger' onClick={this.handleSubClick}>
                         -
                     </button>
                 </div>
