@@ -27,7 +27,7 @@ class LogComponent extends Component {
 
     }
 
-    handleRemoveClick = (index) => {
+    handleRemoveClick = (index) => () => {
         this.setState((prevState) => ({
             log: prevState.log.filter((_, i) => i !== index),
         }));
@@ -47,7 +47,7 @@ class LogComponent extends Component {
                 </div>
                 <div className='list-group'>
                     {this.state.log.map((value, index) => (
-                        <button key={index} type='button' className="list-group-item list-group-item-action" onClick={() => this.handleRemoveClick(index)} >
+                        <button key={index} type='button' className="list-group-item list-group-item-action" onClick={this.handleRemoveClick(index)} >
                             {value}
                         </button>
                     ))}
