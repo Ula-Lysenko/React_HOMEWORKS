@@ -1,3 +1,3 @@
 export const uniqueId = () => {
-    return Math.random().toString(36).substr(2, 3);
+    return Math.random().toString(36).slice(2, 5);
 };

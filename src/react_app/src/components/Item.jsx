@@ -1,9 +1,10 @@
-import React, {Component} from "react";
+import React from "react";
 
 const Item =({task, onRemove}) => (
     <li>
         {task}
-        <button onClick={onRemove}>Remove</button>
+        <hr/>
+        <button type='button' className='btn btn-sm btn-outline-secondary' onClick={onRemove}>Remove</button>
     </li>
 );
 

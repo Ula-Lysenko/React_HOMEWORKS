@@ -11,7 +11,8 @@ class TodoBox extends Component {
         };
     }
 
-    handleAddNote = () => {
+    handleAddNote = (e) => {
+        e.preventDefault();
         const {todoNotes, inputValue} = this.state;
         if (inputValue.trim()) {
             const newNote = {
@@ -25,9 +26,10 @@ class TodoBox extends Component {
         }
     }
 
-    handleRemoveNote = (id) => () => {
-        const {todoNotes} = this.state;
-        const updatedNotes = todoNotes.filter((note) => note.id !== id);
+    handleRemoveNote = (id) => (e) => {
+        e.preventDefault();
+        const oldState = structuredClone(this.state);
+        const updatedNotes = oldState.todoNotes.filter((note) => note.id !== id);
         this.setState({todoNotes: updatedNotes});
     }
 
@@ -40,19 +42,28 @@ class TodoBox extends Component {
 
         return(
             <>
-                <div>
-                    <input
-                    type='text'
-                    value={inputValue}
-                    onChange={this.handleInputChange}
-                    placeholder=''
-                    />
-                    <button onClick={this.handleAddNote}>Add</button>
-                    <ul>
-                        {todoNotes.map((note) => (
-                            <Item key={note.id} task={note.task} onRemove={this.handleRemoveNote(note.id)} />
-                        ))}
-                    </ul>
+                <div className='mb-3'>
+                    <form className='d-flex'>
+                        <div className='me-3'>
+                            <input
+                                type='text'
+                                value={inputValue}
+                                className='form-control'
+                                onChange={this.handleInputChange}
+                                placeholder='I am dreaming...'
+                            />
+                        </div>
+                        <button type='submit' className='btn btn-success' onClick={this.handleAddNote}>Add</button>
+                    </form>
+                    <div className='row'>
+                        <div className='col-auto'>
+                            <ul>
+                                {todoNotes.map((note) => (
+                                    <Item key={note.id} task={note.task} onRemove={this.handleRemoveNote(note.id)}/>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </>
         );

@@ -1,5 +1,3 @@
-import './App.css'
-
 import TodoBox from "./components/TodoBox.jsx";
 
 function App() {
@@ -9,10 +7,9 @@ function App() {
       <div className='App'>
         <TodoBox />
       </div>
-
-
     </>
   )
+
 }
 
 export default App
