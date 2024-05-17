@@ -1,15 +1,16 @@
 import React from 'react';
 
 
-const Modal = ({ isOpen, onClose, children }) => {
+const Modal = ({ isOpen, onClose, title, children }) => {
     const modalClassName = isOpen ? 'modal fade show' : 'modal fade';
+    const modalStyle = isOpen ? 'block' : 'none';
 
     return (
-        <div className={modalClassName} style={{ display: isOpen ? 'block' : 'none' }}>
+        <div className={modalClassName} style={{display: modalStyle}}>
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title">Modal title</h5>
+                        <h5 className="modal-title">{title}</h5>
                         <button
                             type="button"
                             className="btn-close"

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Modal from './Modal.jsx';
 
+
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -17,24 +18,20 @@ class Dashboard extends Component {
     };
 
     render() {
+
         return (
             <div>
                 <button
                     type="button"
-                    className="modal-open-button btn btn-danger"
+                    className="modal-open-button btn btn-warning"
                     onClick={this.toggleModal}
                 >
-                    Open
+                    Open Modal
                 </button>
-                <Modal isOpen={this.state.modal} onClose={this.toggleModal}>
-                    <div>
-                        Type Conversions
-                        Basic operators, maths
-                        Comparisons
-                        Conditional branching: if, '?'
-                        Logical operators
-                        Nullish coalescing operator '??'
-                    </div>
+                <Modal isOpen={this.state.modal} onClose={this.toggleModal} title='Baby Lasagna'>
+                    <p>Meow, cat, please, meow back.</p>
+                    <p>Don’t cry, just dance.</p>
+                    <p>Rim-tim-tagi-digi-dim-tim-tim!</p>
                 </Modal>
             </div>
         );
