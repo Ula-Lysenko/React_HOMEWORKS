@@ -17,7 +17,7 @@ class MyForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            formData: {...formInitState}
+            formData: props.formData ? {...props.formData} : {...formInitState},
         }
     }
 
@@ -41,7 +41,6 @@ class MyForm extends Component {
         this.props.onSubmit(this.state.formData);
         this.setState({formData: {...formInitState}})
     }
-
 
     render() {
         const {email, password, address, city, island, rules} = this.state.formData;
@@ -112,6 +111,7 @@ class MyForm extends Component {
 
 MyForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
+    formData: PropTypes.object,
 }
 
 export default MyForm;

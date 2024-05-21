@@ -8,21 +8,26 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: null
+            data: null,
+            UIShowTable: false,
         }
     }
 
     onSubmitHandler = (formData) => {
       const formDataCopy = cloneDeep(formData);
-      this.setState({data: formDataCopy})
+      this.setState({data: formDataCopy, UIShowTable: true})
+    }
+
+    handleClick = (e) => {
+        this.setState({UIShowTable: false})
     }
 
     render() {
 
         return (
             <Container>
-                <MyForm onSubmit={this.onSubmitHandler}/>
-                {this.state.data && <DataTable tableData={this.state.data}/>}
+                {!this.state.UIShowTable && <MyForm onSubmit={this.onSubmitHandler} formData={this.state.data}/>}
+                {this.state.UIShowTable && <DataTable tableData={this.state.data} onClickBack={this.handleClick}/>}
             </Container>
         )
     }
