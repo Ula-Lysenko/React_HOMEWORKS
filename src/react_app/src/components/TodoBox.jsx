@@ -1,35 +1,54 @@
 import React, {useState} from "react";
 import Item from "./Item.jsx";
+import {uniqueId} from "lodash";
+
 
 const TodoBox = () => {
-    const [tasks, setTasks] = useState([]);
-    const [newTask, setNewTask] = useState('');
+    const [notes, setNotes] = useState([]);
+    const [newNote, setNewNote] = useState('');
 
-    const handleAddTask = () => {
-        if (newTask.trim() !== '') {
-            setTasks((prevTasks) => [newTask, ...prevTasks]);
-            setNewTask('');
+    const handleAddNote = (e) => {
+        e.preventDefault();
+        if (newNote.trim() !== '') {
+            const newTask = {
+                id: uniqueId(),
+                task: newNote,
+            }
+            setNotes((prevNotes) => [newTask, ...prevNotes]);
+            setNewNote('');
         }
     }
 
-    const handleRemoveTask = (index) => {
-        setTasks((prevTasks) => prevTasks.filter ((_, i) => i !== index));
+    const handleRemoveNote = (id) => (e) => {
+        e.preventDefault();
+        setNotes((prevNotes) => prevNotes.filter ((note) => note.id !== id));
     }
 
     return (
         <div>
-            <input
-                type="text"
-                value={newTask}
-                onChange={(e) => setNewTask(e.target.value)}
-                placeholder="Enter a new task"
-            />
-            <button onClick={handleAddTask}>Add Task</button>
-            <ul>
-                {tasks.map((task, index) => (
-                    <Item key={index} task={task} onRemove={() => handleRemoveTask(index)}/>
-                ))}
-            </ul>
+            <div className='mb-3'>
+                <form className='d-flex'>
+                    <div className='me-3'>
+                        <input
+                            type='text'
+                            value={newNote}
+                            className='form-control'
+                            onChange={(e) => setNewNote(e.target.value)}
+                            placeholder='I am dreaming...'
+                        />
+                    </div>
+                    <button type='submit' className='btn btn-success' onClick={handleAddNote}>Add</button>
+                </form>
+                <div className='row'>
+                    <div className='col-auto'>
+                        <ul>
+                            {notes.map((note) => (
+                                <Item key={note.id} task={note.task} onRemove={handleRemoveNote(note.id)}/>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
