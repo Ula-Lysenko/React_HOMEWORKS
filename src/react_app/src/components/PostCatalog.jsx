@@ -1,6 +1,7 @@
 import {Component} from "react";
 import PropTypes from "prop-types";
 
+
 class PostCatalog extends Component {
     constructor(props) {
         super(props);
