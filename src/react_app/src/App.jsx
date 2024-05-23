@@ -1,8 +1,8 @@
 import './App.css'
 import PostCatalog from "./components/PostCatalog.jsx";
 
-function App() {
 
+function App() {
 
   return (
     <>
