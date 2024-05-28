@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const MarkdownEditor = ({onContentChange}) => {
     const editorRef = useRef(null);
-    const [markDownContent, setMarkDownContent] = useState('# happiness');
+    const [markDownContent, setMarkDownContent] = useState('happiness');
 
     useEffect(() => {
         const editor = new Editor({
